@@ -1,0 +1,23 @@
+# Antigravity 運行狀態 (不納入版控，避免會話雜訊)
+.gemini/
+!.gemini/GEMINI.md
+!.gemini/settings.json
+
+# 測試產物 (僅排除測試過程產生的暫存檔)
+/tests/temp/
+*.log
+
+# 作業系統雜訊
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# IDE 設定
+.vscode/
+.idea/
+*.suo
+*.user
+
+# 未來可能擴充的環境變數
+.env
+.env.local
