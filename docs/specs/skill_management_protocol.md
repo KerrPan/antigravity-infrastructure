@@ -14,34 +14,26 @@
 - **優點**：即時同步檔案變更，不需手動複製。
 - **限制**：Windows 環境下通常需要 **系統管理員權限** 才能建立符號連結。
 
-## 3. 自動化實作標準 (setup.ps1)
-每個 Skill 應包含一個位於 `scripts/setup.ps1` 的部署腳本，並遵循以下標準：
+## 3. 部署交付標準 (Manual Command Delivery)
+為了維持環境純淨並避免權限自動化帶來的複雜性，本專案不建立部署腳本。取而代之的是，AI 在完成新 Skill 開發時，必須根據以下標準主動提供布署指令：
 
-### 3.1 腳本行為
-1. **路徑偵測**：自動獲取 Skill 原始碼的絕對路徑。
-2. **衝突檢查**：檢查全域路徑是否已存在同名檔案。
-   - 若已存在同名連結，則提示錯誤並停止，不強制覆蓋。
-3. **錯誤處理**：使用 `Try-Catch` 結構捕獲權限錯誤 (AccessDenied) 並輸出友善提示。
-4. **狀態回報**：成功建立後應輸出連結的詳細資訊。
+### 3.1 指令格式標準
+1. **工具選用**：固定提供 PowerShell 的 `New-Item` 指令。
+2. **絕對路徑**：AI 必須根據當前環境（如 `D:\AI_Project\...`）提供完整的絕對路徑。
+3. **強制參數**：必須包含 `-ItemType SymbolicLink`。
 
-### 3.2 程式碼模板 (PowerShell)
+### 3.2 交付模板
+AI 應在任務總結時提供類似以下的程式碼區塊：
+
 ```powershell
-$SkillName = "..." # 定義 Skill 名稱
-$GlobalSkillsDir = "C:\Users\kissi\.gemini\antigravity\skills"
-$TargetLink = Join-Path $GlobalSkillsDir $SkillName
-$SourcePath = Resolve-Path ".." # 假設腳本在 scripts 子目錄
-
-try {
-    if (Test-Path $TargetLink) {
-        Write-Error "錯誤：全域路徑已存在 '$SkillName'。請先手動解除或確認是否重複。"
-    } else {
-        New-Item -ItemType SymbolicLink -Path $TargetLink -Target $SourcePath
-        Write-Host "成功：已建立符號連結 -> $TargetLink" -ForegroundColor Green
-    }
-} catch {
-    Write-Error "建立失敗：請檢查是否具備系統管理員權限。`n錯誤訊息：$($_.Exception.Message)"
-}
+# 請以系統管理員權限執行以下指令
+New-Item -ItemType SymbolicLink -Path "C:\Users\kissi\.gemini\antigravity\skills\<SKILL_NAME>" -Target "<YOUR_PROJECT_PATH>\src\<SKILL_NAME>"
 ```
+
+### 3.3 錯誤排除指引
+交付指令時需同步附帶以下提醒：
+- **權限要求**：必須使用「系統管理員 (Administrator)」身分執行。
+- **衝突處理**：若目標連結已存在，請先手動刪除 (rm) 後再重新執行。
 
 ## 4. 管理與維護 (README)
 所有遵循此協議的 Skill 必須在專案 `README.md` 中進行註冊說明，並引導使用者如何執行自動化部署。

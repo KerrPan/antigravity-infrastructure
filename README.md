@@ -18,21 +18,19 @@
 *   **分支文件**：若主題龐大（如官方手冊），應將內容拆分為獨立的 Markdown 檔案並由 `SKILL.md` 指引，以優化 Token 消耗。
 
 ### 2. 部署 (全域掛載)
-為了確保跨環境的一致性，本專案採用 **自動化部署腳本** 或手動符號連結 (Symbolic Link)：
+為了確保跨環境的一致性，本專案採用 **手動符號連結 (Symbolic Link)** 進行掛載。
 
-#### A. 自動化部署 (建議)
-每個 Skill 資料夾內的 `scripts/setup.ps1` 均封裝了標準化的掛載邏輯。
-1.  以 **系統管理員** 權限開啟 PowerShell。
-2.  前往該 Skill 的 scripts 目錄：`cd src/<SKILL_NAME>/scripts`。
-3.  執行部署腳本：`.\setup.ps1`。
+#### 部署 SOP
+1.  **獲取指令**：在開發完成後，AI 會根據 [全域 Skill 管理協議](file:///d:/AI_Project/gemini_project/AI_Study/Antigravity/docs/specs/skill_management_protocol.md) 提供對應的 PowerShell 指令。
+2.  **執行掛載**：
+    *   以 **系統管理員** 權限開啟 PowerShell。
+    *   複製並執行 AI 提供的 `New-Item` 指令。
+3.  **衝突處理**：若目標路徑已存在舊連結，請先執行 `rm <Target_Path>` 刪除後再重試。
 
-#### B. 手動部署 (備援)
-若自動化腳本不可用，請依循 [全域 Skill 管理協議](file:///d:/AI_Project/gemini_project/AI_Study/Antigravity/docs/specs/skill_management_protocol.md) 執行：
-*   **路徑**：`C:\Users\kissi\.gemini\antigravity\skills\`
-*   **指令 (PowerShell 管理員模式)**：
-    ```powershell
-    New-Item -ItemType SymbolicLink -Path "C:\Users\kissi\.gemini\antigravity\skills\<SKILL_NAME>" -Target "<PROJECT_PATH>\src\<SKILL_FOLDER>"
-    ```
+#### 指令範本
+```powershell
+New-Item -ItemType SymbolicLink -Path "C:\Users\kissi\.gemini\antigravity\skills\<SKILL_NAME>" -Target "<PROJECT_PATH>\src\<SKILL_FOLDER>"
+```
 
 ### 3. 指引與授權
 *   **更新全域規則**：修改 `C:\Users\kissi\.gemini\GEMINI.md`，在 `## 全域資源參考` 區塊加入新 Skill 的描述，告知 AI 在何種任務下應優先調用該技能。
