@@ -5,7 +5,7 @@
 ## 📂 目錄結構
 - `.gemini/`：存放專案特定的 AI 狀態與設定。
 - `docs/specs/`：存放全域功能或 Skill 的技術規格書與測試計畫。
-- `src/`：存放實際的 Skill 原始碼（例如：`antigravity-manual-skill`）。
+- `src/skills/`：存放實際的 Skill 原始碼（例如：`antigravity-manual`、`github-cli`）。
 - `tests/`：存放驗證指令或測試腳本。
 
 ## 🛠️ 全域 Skill 處理方式 (SOP)
@@ -13,8 +13,9 @@
 為了讓全域 AI 此隨時能取用本專案開發的技能，請遵循以下維護標準：
 
 ### 1. 建立與編寫
-*   **Skill 根目錄**：每個技能必須在 `src/` 下擁有獨立資料夾，且內部必須包含 `SKILL.md`。
-*   **YAML 前言**：`SKILL.md` 頂部必須定義 `name` 與 `description`，這是 AI 判斷是否調用的關鍵。
+*   **命名規範**：技能目錄與 `SKILL.md` 中的 `name` 必須統一使用 **kebab-case (`-`)**（例如 `my-new-skill`），嚴禁使用底線或混用大小寫。
+*   **Skill 存放路徑**：每個技能必須在 `src/skills/` 下擁有獨立資料夾，且內部必須包含 `SKILL.md`。
+*   **YAML 標頭**：`SKILL.md` 頂部必須定義 `name` 與 `description`，這是 AI 判斷是否調用的關鍵。
 *   **分支文件**：若主題龐大（如官方手冊），應將內容拆分為獨立的 Markdown 檔案並由 `SKILL.md` 指引，以優化 Token 消耗。
 
 ### 2. 部署 (全域掛載)
@@ -27,9 +28,9 @@
     *   複製並執行 AI 提供的 `New-Item` 指令。
 3.  **衝突處理**：若目標路徑已存在舊連結，請先執行 `rm <Target_Path>` 刪除後再重試。
 
-#### 指令範本
+#### 指令範本 (PowerShell)
 ```powershell
-New-Item -ItemType SymbolicLink -Path "C:\Users\kissi\.gemini\antigravity\skills\<SKILL_NAME>" -Target "<PROJECT_PATH>\src\<SKILL_FOLDER>"
+New-Item -ItemType SymbolicLink -Path "C:\Users\kissi\.gemini\antigravity\skills\<SKILL_NAME>" -Target "<PROJECT_PATH>\src\skills\<SKILL_FOLDER>"
 ```
 
 ### 3. 指引與授權
@@ -42,5 +43,10 @@ New-Item -ItemType SymbolicLink -Path "C:\Users\kissi\.gemini\antigravity\skills
 3.  測試變更是否符合預期。
 4.  Commit 並 Push 變更至 Git（建議）。
 
+## ⚙️ 必要環境 (Prerequisites)
+- **Node.js**: v20.0.0+ (用於執行 OpenCLI)
+- **OpenCLI**: `npm install -g @jackwener/opencli`
+- **Browser Bridge**: 需在 Chrome 載入 [OpenCLI 擴充功能](https://github.com/jackwener/OpenCLI/releases)
+
 ---
-*Last Updated: 2026-04-10*
+*Last Updated: 2026-04-10 (Refactored Structure)*
