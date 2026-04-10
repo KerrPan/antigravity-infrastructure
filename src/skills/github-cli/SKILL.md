@@ -1,10 +1,10 @@
 ---
-name: github_cli_skill
+name: github-cli
 description: 整合 GitHub CLI (gh) 工具，提供專案閱讀、Issue/PR 追蹤與 API 檢索能力。
 author: Antigravity
 ---
 
-# GitHub CLI Skill (github_cli_skill)
+# GitHub CLI Skill (github-cli)
 
 本 Skill 定義了 Antigravity 如何調用 `gh` 命令行工具來協助使用者閱讀與討論 GitHub 上的開源項目。
 
