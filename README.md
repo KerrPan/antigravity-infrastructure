@@ -18,12 +18,21 @@
 *   **分支文件**：若主題龐大（如官方手冊），應將內容拆分為獨立的 Markdown 檔案並由 `SKILL.md` 指引，以優化 Token 消耗。
 
 ### 2. 部署 (全域掛載)
-*   不要將原始碼直接放在系統目錄。應利用 **Symbolic Link** 將 `src/` 下的技能目錄連結至全域路徑：
-    *   **路徑**：`C:\Users\kissi\.gemini\antigravity\skills\`
-    *   **指令 (PowerShell 管理員模式)**：
-      ```powershell
-      New-Item -ItemType SymbolicLink -Path "C:\Users\kissi\.gemini\antigravity\skills\<SKILL_NAME>" -Target "<PROJECT_PATH>\src\<SKILL_FOLDER>"
-      ```
+為了確保跨環境的一致性，本專案採用 **自動化部署腳本** 或手動符號連結 (Symbolic Link)：
+
+#### A. 自動化部署 (建議)
+每個 Skill 資料夾內的 `scripts/setup.ps1` 均封裝了標準化的掛載邏輯。
+1.  以 **系統管理員** 權限開啟 PowerShell。
+2.  前往該 Skill 的 scripts 目錄：`cd src/<SKILL_NAME>/scripts`。
+3.  執行部署腳本：`.\setup.ps1`。
+
+#### B. 手動部署 (備援)
+若自動化腳本不可用，請依循 [全域 Skill 管理協議](file:///d:/AI_Project/gemini_project/AI_Study/Antigravity/docs/specs/skill_management_protocol.md) 執行：
+*   **路徑**：`C:\Users\kissi\.gemini\antigravity\skills\`
+*   **指令 (PowerShell 管理員模式)**：
+    ```powershell
+    New-Item -ItemType SymbolicLink -Path "C:\Users\kissi\.gemini\antigravity\skills\<SKILL_NAME>" -Target "<PROJECT_PATH>\src\<SKILL_FOLDER>"
+    ```
 
 ### 3. 指引與授權
 *   **更新全域規則**：修改 `C:\Users\kissi\.gemini\GEMINI.md`，在 `## 全域資源參考` 區塊加入新 Skill 的描述，告知 AI 在何種任務下應優先調用該技能。
