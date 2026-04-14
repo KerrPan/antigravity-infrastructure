@@ -1,0 +1,18 @@
+# Antigravity Feedback Flywheel (回饋飛輪紀錄)
+
+本專案的回饋演化紀錄，用於捕捉模式 (Patterns) 並持續優化。
+
+---
+
+## 🔄 飛輪紀錄表
+
+| 日期 | 場景 (Scenario) | 使用者修正/決策 (Judgment Signal) | 潛在規則 (Potential Static Rule) | 狀態 |
+| :--- | :--- | :--- | :--- | :--- |
+| | | | | |
+
+---
+
+## 🛠️ 維護準則
+1. **即時性**：在對話中發生重大方向修正後，AI 應主動更新此表。
+2. **靜態化觸發**：當同一類型的「使用者修正」出現超過 **3 次**，或累積 **5 筆** 不同紀錄時，AI 應提議更新 `GEMINI.md` 或相關 `SKILL.md`。
+3. **目的**：減少未來的 Friction，讓 Static Scaffolding 越來越準。

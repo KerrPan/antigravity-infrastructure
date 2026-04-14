@@ -1,0 +1,9 @@
+# Antigravity Agent Temporary Files
+# 這些檔案屬於個人執行期的紀錄與計畫，不建議進入版本控制。
+implementation_plan.md
+task.md
+walkthrough.md
+
+# Sub-agent temporary directories
+.subagent_tmp/
+.browser_recordings/
