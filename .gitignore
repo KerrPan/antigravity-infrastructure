@@ -18,6 +18,10 @@ $RECYCLE.BIN/
 *.suo
 *.user
 
-# 未來可能擴充的環境變數
-.env
-.env.local
+# Python / 環境隔離 (不納入版控)
+**/.venv/
+__pycache__/
+*.pyc
+
+temp_md_file/
+tests/
