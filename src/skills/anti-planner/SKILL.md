@@ -47,6 +47,16 @@ AI 不該產出無法驗證的代碼。
 AI 不應在單一 Context 下完成所有高風險決策。
 *   **動作**：若任務涉及核心商業邏輯、複雜安全模組或外部市場分析，應規劃「Spawn Sub-agent」進行側向交叉檢驗。同時，若使用者在執行中提供「糾正信號」，必須即時調整計畫圖。
 
+### 7. 自適應循環推理 (Adaptive Looped Reasoning)
+遵循 `AGENTS.md` 中的循環協議，提升計畫穩健性。
+*   **動作**：對於 Level 2 任務，在提交 `implementation_plan.md` 前，必須啟動一名「嚴格挑刺型」Critic Sub-agent。
+*   **輸出要求**：最終計畫中不顯示審核過程紀錄，僅呈現經由「批判-修正」循環後的最優結果。
+
+### 8. 變更聯動與文件溯源 (Change Linkage & Traceability)
+防止內化知識導致的規則遺失與模板脫鉤。
+*   **動作**：修改任何專案標準文件（如 `AGENTS.md`, `FLYWHEEL.md`）時，必須同步檢查其在 `src/skills/anti-planner/templates/` 下的對應模板。
+*   **準則**：所有 Agent 的行為邏輯變更，必須在代碼庫中具備對應的文件說明（如 `AGENTS.md` 或 `SKILL.md`），嚴禁僅依賴內化知識執行。
+
 ---
 
 ## 📝 標準化 implementation_plan.md 範本
@@ -122,6 +132,7 @@ User -> (新介面) -> [資料整理器] -> 統一格式輸出
 本專案遵循「On the Loop」協作模式。
 1. Humans steer. Agents execute.
 2. 任何重大決策需通過 AGENTS.md 定義之 T2 驗證。
+3. 遵循 §5 循環推理與 ACT 停機協議：Think deep, Halt smart.
 ```
 
 ### [Template: FLYWHEEL.md]

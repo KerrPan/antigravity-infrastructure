@@ -3,6 +3,9 @@
 !.gemini/GEMINI.md
 !.gemini/settings.json
 
+# 參考資料
+docs/reference/*
+
 # 測試產物 (僅排除測試過程產生的暫存檔)
 /tests/temp/
 *.log
