@@ -28,3 +28,6 @@ __pycache__/
 
 temp_md_file/
 tests/
+
+# D2 Diagrams
+d2_UML/
