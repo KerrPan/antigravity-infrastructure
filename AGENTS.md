@@ -52,5 +52,24 @@ Agent 必須依照以下量表進行自評，達到 4 分方可停機：
 | **安全防護** | 嚴格符合邊界，包含完美的錯誤處理與防呆機制。 | 符合安全規範，具備基礎錯誤處理與資源釋放。 | 超出範圍、存在寫死路徑或安全風險。 |
 | **內容簡潔度** | Markdown 格式優化，結構分段明確，無冗餘資訊。 | 資訊量適中，重點突出，計畫路徑清晰。 | 描述籠統、排版混亂或包含大量廢話。 |
 
+## 6. 專案導航 (Project Navigation)
+
+| 業務領域 (Domain) | 核心模組 / 檔案 (Core Files) | 觸發場景 / 備註 |
+| :--- | :--- | :--- |
+| **全域規劃 (Planning)** | `src/skills/anti-planner/SKILL.md` | 接到開發任務，準備撰寫實作計畫時 |
+| **繪圖引擎 (UML)** | `src/skills/d2-styler/SKILL.md`, `d2_UML/` | 需要生成架構圖或類別圖時 |
+| **GitHub 操作** | `src/skills/github-cli/SKILL.md` | 需要建立 Issue, PR 或查詢 Repo 狀態時 |
+| **文件擷取 (OpenCLI)** | `src/skills/opencli/SKILL.md` | 需要讀取外部網頁內容資訊時 |
+| **官方手冊 (Manual)** | `src/skills/antigravity-manual/SKILL.md` | 查詢本系統核心概念或配置說明時 |
+| **文檔規格 (Specs)** | `docs/specs/`, `docs/ADR/` | 需要確認 API 合約或架構決策背景時 |
+
+### 常用指令 (Common Commands)
+- **List Skills**: `ls src/skills/`
+- **Check Flywheel**: `cat FLYWHEEL.md`
+
+## 7. 版本真相來源 (Version Source of Truth)
+- **基礎設施版本**: v1.2 (由 `AGENTS.md` 內容演進追蹤)
+- **依賴規範**: Node.js v20+, OpenCLI v1.0+
+
 ---
 > 「Think deep. Halt smart.」 — Antigravity Evolved 2026

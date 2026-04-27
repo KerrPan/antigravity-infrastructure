@@ -40,7 +40,10 @@ AI 不該產出無法驗證的代碼。
 
 ### 5. 文件即程式碼 (Docs as Code)
 代碼變更與文件更新必須綁定在同一個任務週期。 **嚴禁使用籠統描述**。
-*   **動作**：如果邏輯或介面有變，必須同步盤點並更新註解、型別定義、README 或建立 ADR (Architecture Decision Records)。
+*   **動作**：如果邏輯或介面有變，必須同步盤點並更新**註解、型別定義、README** 或產出/更新相關規格文檔。
+*   **文檔準則**：
+    *   **API/功能異動**：使用 `SPEC.md.template` 產出/更新 `docs/specs/SPEC-xxx.md`。
+    *   **重大架構決策**：使用 `ADR.md.template` 產出/更新 `docs/ADR/ADR-xxx.md`。
 *   **輸出**：計畫中必須規劃具體的「文件更新步驟」，並標明「路徑 + 行號區段/章節名」。
 
 ### 6. 動態分解與子代理驗證 (Dynamic Decomposition)
@@ -101,8 +104,9 @@ User -> (新介面) -> [資料整理器] -> 統一格式輸出
 > [!IMPORTANT]
 > 嚴禁使用籠統描述（如「更新 README」）。必須為具體「路徑 + 行號區段/章節名」。
 *   [ ] **README.md**: [章節名稱] - 同步修改 [具體功能/API/配置] 定義。
-*   [ ] **docs/ADR/**: [NEW/MODIFY] [編號-名稱.md] - 紀錄本次 [核心架構/決策理由]。
-*   [ ] 其他受影響文件（如環境變數範例檔 `.env.example`）。
+*   [ ] **docs/specs/**: [NEW/MODIFY] [SPEC-xxx-名稱.md] - 依據 `SPEC.md.template` 更新規格真相。
+*   [ ] **docs/ADR/**: [NEW/MODIFY] [ADR-xxx-名稱.md] - 依據 `ADR.md.template` 紀錄核心架構決策。
+*   [ ] 其他受影響文件。
 
 ## 待人類決策 (Open Questions)
 *   [列出需要人類架構師提早決定的介面或邏輯分歧點]
@@ -133,6 +137,9 @@ User -> (新介面) -> [資料整理器] -> 統一格式輸出
 1. Humans steer. Agents execute.
 2. 任何重大決策需通過 AGENTS.md 定義之 T2 驗證。
 3. 遵循 §5 循環推理與 ACT 停機協議：Think deep, Halt smart.
+### 常用指令 (Common Commands)
+- **List Skills**: `ls src/skills/`
+- **Check Flywheel**: `cat FLYWHEEL.md`
 ```
 
 ### [Template: FLYWHEEL.md]

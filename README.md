@@ -9,7 +9,8 @@
 
 ## 📂 目錄結構
 - `.gemini/`：存放專案特定的 AI 狀態與設定。
-- `docs/specs/`：存放全域功能或 Skill 的技術規格書與測試計畫。
+- `docs/specs/`：存放全域功能或 Skill 的技術規格書 (Specs)與測試計畫。
+- `docs/ADR/`：存放架構決策紀錄 (Architecture Decision Records)。
 - `src/skills/`：存放實際的 Skill 原始碼（例如：`antigravity-manual`、`github-cli`）。
 - `tests/`：存放驗證指令或測試腳本。
 

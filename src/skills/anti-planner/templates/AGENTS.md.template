@@ -34,5 +34,28 @@ Agent 必須依照以下量表進行自評，達到 4 分方可停機：
 | **安全防護** | 嚴格符合邊界，包含完美的錯誤處理與防呆機制。 | 符合安全規範，具備基礎錯誤處理與資源釋放。 | 超出範圍、存在寫死路徑或安全風險。 |
 | **內容簡潔度** | Markdown 格式優化，結構分段明確，無冗餘資訊。 | 資訊量適中，重點突出，計畫路徑清晰。 | 描述籠統、排版混亂或包含大量廢話。 |
 
+## 6. 專案導航 (Project Navigation)
+
+| 業務領域 (Domain) | 核心模組 / 檔案 (Core Files) | 觸發場景 / 備註 |
+| :--- | :--- | :--- |
+| (例如: 使用者管理) | `src/users/` | 當涉及登入、註冊或權限異動時 |
+
+### 常用指令 (Common Commands)
+- **Build**: `[Build Command]`
+- **Test**: `[Test Command]`
+- **Lint**: `[Lint Command]`
+
+## 7. 版本真相來源 (Version Source of Truth)
+- **核心版本**: (例如: package.json / .csproj)
+- **環境規格**: (例如: node version / .net sdk)
+
+## 8. 文檔同步觸發 (Docs Sync Triggers)
+
+| 觸發事件 (Event) | 應更新/產出的文檔 | 模板路徑 (Skill Templates) |
+| :--- | :--- | :--- |
+| **API 新增或異動** | `docs/specs/SPEC-xxx.md` | `anti-planner/templates/SPEC.md.template` |
+| **重大架構決策** | `docs/ADR/ADR-xxx.md` | `anti-planner/templates/ADR.md.template` |
+| **系統重大里程碑** | `docs/specs/SA-xxx.md` | (System Analysis Snapshot) |
+
 ---
 > 「Think deep. Halt smart.」 — Antigravity Evolved 2026

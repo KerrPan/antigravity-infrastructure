@@ -1,0 +1,39 @@
+# SPEC-xxx: {Feature/API Name} 規格書
+
+| 欄位 | 數值 |
+| :--- | :--- |
+| **版本** | v0.1 |
+| **狀態** | Draft |
+| **範圍** | (此規格書涵蓋的 Controller / Service / Module) |
+| **關聯文件** | (SA-xxx, ADR-xxx, 或其他相關文件) |
+
+## 1. 業務目標 (Business Goal)
+(簡述此功能或 API 的核心商業目的與用戶價值)
+
+## 2. 介面定義 (Interface Definition)
+
+| 項目 | 描述 |
+| :--- | :--- |
+| **功能 (Function)** | (例如: 建立訂單、查詢使用者狀態) |
+| **權限 (Permission)** | (要求的 RBAC 角色或 API Key 權限) |
+| **請求 (Request)** | (Method, Path, Query Params, Body 結構) |
+| **回應 (Response)** | (Success/Error Code, Data 結構) |
+
+## 3. DTO 定義 (DTO Definitions)
+(列出關鍵的 DTO 類別與欄位，必須從代碼中精確提取)
+
+- **InputDTO**:
+  - `field_name` (type): description [required/optional]
+- **OutputDTO**:
+  - `field_name` (type): description
+
+## 4. 商業規則 (Business Rules)
+(描述驗證邏輯、計算規則或邊界條件)
+- [ ] 規則 1: ...
+- [ ] 規則 2: ...
+
+## 5. 變更紀錄 (Changelog)
+
+| 版本 | 日期 | 變更內容 |
+| :--- | :--- | :--- |
+| v0.1 | {today} | Initial draft |
